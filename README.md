@@ -17,7 +17,7 @@ Site: https://casual-cling-97588317.figma.site
 
 ## Technologies
 
-Built with TypeScript, CSS, and HTML.
+Built with TypeScript and CSS
 
 ## Contributors
 
