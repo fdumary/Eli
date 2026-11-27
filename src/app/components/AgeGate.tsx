@@ -18,7 +18,7 @@ export function AgeGate({ onConfirm }: AgeGateProps) {
             <span className="text-3xl" role="img" aria-label="flower">🌸</span>
           </div>
           <h1 id="age-gate-title" className="text-2xl font-semibold text-gray-800 mb-2">
-            Eli - AI Wellness Companion
+            Eli - Wellness Companion
           </h1>
           <p className="text-gray-600">
             Safe space for emotional connection and

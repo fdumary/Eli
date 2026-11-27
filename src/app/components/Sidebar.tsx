@@ -35,7 +35,7 @@ export function Sidebar({ activeView, setActiveView, profile, setProfile, onOpen
     <div className="w-full h-full bg-white/80 backdrop-blur-sm border-r border-purple-100 flex flex-col overflow-hidden">
       {/* Header */}
       <div className="p-6 border-b border-purple-100 flex-shrink-0">
-        <h1 className="font-semibold text-gray-800 mb-1">Eli - AI Wellness Companion</h1>
+        <h1 className="font-semibold text-gray-800 mb-1">Eli - Wellness Companion</h1>
         <p className="text-sm text-gray-500">Your space for self-discovery</p>
         {profile.name && (
           <p className="text-xs text-purple-600 mt-2">Welcome back, {profile.name}</p>
