@@ -2,3 +2,17 @@
 set -euo pipefail
 
 pnpm install --ignore-scripts --prefer-offline --no-frozen-lockfile
+
+# Rollup's native optional dependency can be omitted from fresh Linux installs.
+# Add it to node_modules without persisting the repair to project metadata.
+if ! node -e "require.resolve('@rollup/rollup-linux-x64-gnu')" >/dev/null 2>&1; then
+  package_json_backup="$(mktemp)"
+  cp package.json "$package_json_backup"
+  trap 'cp "$package_json_backup" package.json; rm -f "$package_json_backup"' EXIT
+
+  pnpm add --save-dev --lockfile=false @rollup/rollup-linux-x64-gnu@4.52.2
+
+  cp "$package_json_backup" package.json
+  rm -f "$package_json_backup"
+  trap - EXIT
+fi
