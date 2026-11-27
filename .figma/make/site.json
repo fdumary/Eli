@@ -1,0 +1,10 @@
+{
+  "description": "AI Companion offers a supportive chatbot for high-agency women navigating singlehood, providing tools for self-discovery, emotional validation, and sexual wellness.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
