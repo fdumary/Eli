@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
+# Fresh cached-preview installs can omit Rollup's platform package when the
+# lockfile was generated on another platform. Install it locally without
+# persisting disposable-workspace changes to the project manifest.
+if ! node -e "require.resolve('@rollup/rollup-linux-x64-gnu')" >/dev/null 2>&1; then
+  package_json_backup="$(mktemp)"
+  cp package.json "$package_json_backup"
+  trap 'cp "$package_json_backup" package.json; rm -f "$package_json_backup"' EXIT
+
+  pnpm add --save-dev --lockfile=false @rollup/rollup-linux-x64-gnu@4.52.2
+
+  cp "$package_json_backup" package.json
+  rm -f "$package_json_backup"
+  trap - EXIT
+fi
+
 # Build in development mode to emit sourcemaps.
 pnpm run build --mode development
 figma make deploy-preview --build-dir dist
